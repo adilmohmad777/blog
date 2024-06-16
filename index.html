@@ -4,32 +4,11 @@
     <title>blog!</title>
   </head>
   <body>
-    <?php
-header("location:public/index.php");
-    ?>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
+  
+   
+	  <a href="public/index.php">Start blog</a> 
+	  <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
   </body>
 </html>
 <?php
 
-session_start();
-
-require "../app/core/init.php";
-
-
-$url = $_GET['url'] ?? 'home';
-$url = strtolower($url);
-$url = explode("/", $url);
-
-$page_name = trim($url[0]);
-$filename = "../app/pages/".$page_name.".php";
-
-$PAGE = get_pagination_vars();
-
-if(file_exists($filename))
-{
-	require_once $filename;
-}else
-{
-	require_once "../app/pages/404.php";
-}
